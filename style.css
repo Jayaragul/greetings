@@ -1,0 +1,163 @@
+body {
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    overflow: hidden; /* Prevents scrollbars from appearing */
+    background: linear-gradient(to bottom right, #ffdde1, #ee9ca7); /* Pinkish light gradient background */
+        
+
+}
+
+
+.container {
+    background-color: #fff;
+    border: 2px solid #ffcccb;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    position: relative; /* Allows positioning of the heart gifs */
+}
+
+.message {
+    font-size: 1.5em;
+    color: #333;
+    display: none; /* Hide the message initially */
+    opacity: 0;
+    transform: scale(0.8); /* Start scaled down */
+    transition: opacity 1s ease-in-out, transform 0.5s ease-in-out; /* Add transition for fade-in and scale-up effect */
+}
+
+.message::after {
+    content: " 🐱❤️";
+    font-size: 1.5em;
+}
+
+#revealButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    background-color: #ffcccb;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Add transition for button effects */
+}
+
+#revealButton:hover {
+    animation: bounce 0.5s; /* Bounce effect on hover */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Heart Gif Animation */
+.heart {
+    position: absolute;
+    width: 50px;
+    animation: fly 5s ease-in-out infinite; /* Fly indefinitely */
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.heart:nth-child(3) {
+    animation-delay: 1s; /* Delay start for the second heart */
+}
+
+.heart:nth-child(4) {
+    animation-delay: 2s; /* Delay start for the third heart */
+}
+
+.heart:nth-child(5) {
+    animation-delay: 3s; /* Delay start for the fourth heart */
+}
+
+@keyframes fly {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(100px, 100px); /* Move to the center */
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 600px) {
+    .message {
+        font-size: 1.2em;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .heart {
+        width: 40px; /* Smaller heart for smaller screens */
+    }
+}
+
+@media (max-width: 400px) {
+    .message {
+        font-size: 1em;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    #revealButton {
+        font-size: 0.9em;
+    }
+
+    .heart {
+        width: 30px; /* Even smaller heart for very small screens */
+    }
+    .heart-corner {
+        position: fixed;
+        bottom: 20px; /* Adjust as needed */
+        right: 20px; /* Adjust as needed */
+        width: 50px; /* Adjust size as needed */
+        z-index: 9999; /* Ensure it's on top of other content */
+    }
+    
+}
